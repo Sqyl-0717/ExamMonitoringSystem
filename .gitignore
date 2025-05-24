@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+env/
+.venv/
+*.egg-info/
+
+# VS Code & IDEs
+.vscode/
+.idea/
+
+# OS system files
+.DS_Store
+Thumbs.db
+
+# Logs / cache
+*.log
+*.tmp
+
+# Python data files
+*.npy
+*.npz
+*.pkl
+*.h5
+*.pt
+*.ckpt
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ZIP or output files
+*.zip
+*.tar.gz
