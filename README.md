@@ -1,100 +1,87 @@
-# ExamMonitoringSystem
+# Exam Monitoring System
 
-An **Intelligent Exam Monitoring System** integrating a PySide6-based GUI, SQLite-backed user authentication, and modular deep-learning pipelines powered by YOLOv5~v8. It supports multiple input sources (camera, video, images, batch files) and provides real-time visualization, cheat-event tracking, and interactive controls.
-
----
-
-## 🚀 Features
-
-### 🔍 Multi-Model Cheat Detection
-- Supports **YOLOv8** (anchor-free, high-accuracy)
-- **YOLOv7** (speed–accuracy trade-off)
-- **YOLOv6** (industrial-scale deployment)
-- **YOLOv5** (PyTorch-based flexibility)
-
-### 🔐 User Authentication & Management
-- Login, registration, password reset
-- Avatar upload, logout
-- PySide6 GUI + SQLite database
-
-### 🎛️ Interactive GUI Controls
-- Start/stop video streams
-- Save snapshots
-- Event filter dropdowns
-- Access to help/documentation
-
-### 📺 Real-Time Visual Feedback
-- Bounding boxes, class labels, confidence
-- Statistics display (e.g., cheat event count)
-
-### 🧪 Training & Evaluation Pipelines
-- Train models (`run_train_model.py`)
-- Camera test (`run_test_camera.py`)
-- Image/video inference (`run_test_image.py`, `run_test_video.py`)
-- Headless test mode (`run_main_noLogin.py`)
+The Intelligent Exam Monitoring System integrates a PySide6-based GUI with SQLite-backed user authentication and modular deep-learning detection pipelines powered by the YOLO family (v8, v7, v6, v5). It supports multiple input sources (camera, video, images, batch files) and real-time visualization of detection boxes, cheat-event counts, and interactive controls for saving results or filtering alerts.
 
 ---
 
-## 📁 Project Structure
+## Features
+
+### • Multi-Model Cheat Detection
+Supports YOLOv8 for anchor-free, high-accuracy real-time detection, YOLOv7 for enhanced speed–accuracy trade-off, YOLOv6 optimized for industrial-scale deployment, and YOLOv5’s PyTorch-based ease-of-use.
+
+### • User Authentication & Account Management
+Login, registration, password reset, avatar customization, and session logout implemented via PySide6 GUI and SQLite database integration.
+
+### • Interactive GUI Controls
+Buttons for starting/stopping media streams, saving detection snapshots, accessing help, and dropdown filters for event types.
+
+### • Real-Time Visual Feedback
+Bounding boxes, class labels, confidence scores overlaid on video/images, plus statistics like “number of cheat events”.
+
+### • Training & Evaluation Pipelines
+Scripts for model training (`run_train_model.py`), camera testing (`run_test_camera.py`), image/video inference (`run_test_image.py`, `run_test_video.py`), and headless runs without login (`run_main_noLogin.py`).
+
+---
+
+## Project Structure
 
 ```
 ExamMonitoringSystem/
 ├── datasets/             # Annotated data for model training
 ├── icons/                # Application icons & logos
-├── runs/                 # YOLO training outputs
-├── test_media/           # Sample test images/videos
-├── themes/               # Qt themes & stylesheets
-├── ultralytics/          # YOLO integration
+├── runs/                 # YOLO training outputs (logs, weights)
+├── test_media/           # Sample images & videos for testing
+├── test_media2/          # Additional test datasets
+├── themes/               # Qt stylesheets & UI themes
+├── ultralytics/          # Ultralytics YOLO codebase integration
 ├── weights/              # Pre-trained model weights
-├── LoginForm.ui          # Qt Designer login form
+├── LoginForm.ui          # Qt Designer XML for login dialog
 ├── LoginForm.py          # Python wrapper for login UI
-├── Recognition_UI.ui     # Qt Designer detection dashboard
-├── Recognition_UI.py     # Python wrapper for detection UI
-├── RecSystem.qrc         # Qt resource file
-├── RecSystem.py          # GUI main application logic
-├── run_main_login.py     # Authenticated launcher
-├── run_main_noLogin.py   # Bypass login, quick testing
-├── run_test_camera.py    # Live camera inference
-├── run_test_image.py     # Inference on single image
-├── run_test_video.py     # Inference on video files
-├── run_train_model.py    # Training orchestration
-├── System_login.py       # Login validation backend
-└── System_noLogin.py     # Unauthenticated backend logic
+├── LoginWindow.py        # Main login window logic
+├── Recognition_UI.ui     # Qt Designer XML for detection dashboard
+├── Recognition_UI.py     # Python wrapper for recognition UI
+├── RecSystem.qrc         # Qt resource collection (icons, images)
+├── RecSystem.py          # Application entrypoint for GUI logic
+├── run_main_login.py     # Launcher requiring user authentication
+├── run_main_noLogin.py   # Launcher bypassing login for quick tests
+├── run_test_camera.py    # Live-camera inference script
+├── run_test_image.py     # Single image inference script
+├── run_test_video.py     # Video file inference script
+├── run_train_model.py    # Model training orchestration
+├── System_login.py       # Backend logic for login validation
+└── System_noLogin.py     # Backend logic for unauthenticated operations
 ```
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 - Python 3.8+
-- `PySide6`
-- `ultralytics` (YOLOv5/6/7/8 support)
-- `OpenCV-Python`
-- `SQLite3` (built-in with Python)
+- PySide6 for GUI
+- ultralytics (YOLOv8, YOLOv7, YOLOv6, YOLOv5) packages
+- SQLite3 (built-in) for user data storage
+- OpenCV-Python for image/video I/O
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/Sqyl-0717/ExamMonitoringSystem.git
+# 1. Clone the repo:
+git clone https://github.com/yourusername/ExamMonitoringSystem.git
 cd ExamMonitoringSystem
 
-# 2. Create and activate virtual environment
+# 2. Create and activate a virtual environment:
 python -m venv venv
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 
-# 3. Install dependencies
+# 3. Install dependencies:
 pip install -r requirements.txt
 ```
 
 ---
 
-## 🧪 Usage
+## Usage
 
 ```bash
 # 1. Run with Login
@@ -103,10 +90,10 @@ python run_main_login.py
 # 2. Run without Login
 python run_main_noLogin.py
 
-# 3. Test with Camera
+# 3. Test Camera Input
 python run_test_camera.py
 
-# 4. Test with Image or Video
+# 4. Test Image/Video
 python run_test_image.py --source path/to/image.jpg
 python run_test_video.py --source path/to/video.mp4
 
@@ -116,15 +103,9 @@ python run_train_model.py --cfg yolov8n.yaml --data data.yaml
 
 ---
 
-## 📌 Future Work
+## Future Work
 
-- Integration of additional pre-trained models (YOLO-NAS, ViT-based detectors)
-- Behavior analysis using pose estimation and gaze tracking
-- Web-based remote dashboard with live streams
-- Email/SMS-based cheat alert automation
-
----
-
-## 📬 Contact
-
-For questions or contributions, please feel free to submit a [Pull Request](https://github.com/Sqyl-0717/ExamMonitoringSystem/pulls) or open an [Issue](https://github.com/Sqyl-0717/ExamMonitoringSystem/issues).
+- Additional Pre-Trained Models (e.g., YOLO-NAS, Transformer-based detectors)
+- Enhanced Behavior Analysis with pose estimation or attention tracking
+- Web-Based Dashboard for remote monitoring
+- Automated Alerts via email/SMS integration
