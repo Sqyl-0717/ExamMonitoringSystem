@@ -23,8 +23,8 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)  # 从Ui_MainWindow中导入界面生成
 
         # 设置界面最小化、退出等控制按钮及弹窗参数
-        QWindowCtrls(self, exit_title="基于YOLOv8/v5的智能监考系统",  # 退出确认框标题
-                     exit_message='是否要退出程序？',  # 退出确认框text
+        QWindowCtrls(self, exit_title="YOLOv8/v5-based Intelligent Exam Monitoring System",  # 退出确认框标题
+                     exit_message='Really leave?',  # 退出确认框text
                      button_sizes=(20, 20),  # 窗口控制按钮的大小
                      button_gaps=30,  # 窗口控制按钮间的间距
                      button_right_margin=50,  # 窗口控制按钮距离右侧的间距
@@ -53,7 +53,7 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         self.slot_init()  # 定义槽函数
 
         self.id_tab = 0  # 表格行数，用于记录识别识别条目
-        self.count_name = ["疑似作弊", "良好", "正常"]  # 定义类名列表
+        self.count_name = ["Suspected Cheating", "Good", "Normal"]  # 定义类名列表
         self.count_table = []  # 存储花卉识别计数的列表
         self.colors = self.get_cls_color(self.count_name)  # 根据类别产生对应标记的颜色
 
@@ -193,7 +193,7 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
                         self.label_class_result.setText(res)  # 类别显示
                         QtWidgets.QApplication.processEvents()
         except:
-            self.label_display.setText('当前画面无法重现，请点选图片的识别记录！')
+            self.label_display.setText('Unable to display the frame. Please select a recognition record!')
 
     def toggle_comboBox(self):
         """
@@ -241,17 +241,17 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         self.clearUI()  # 清除UI上的标签显示
 
         filename, filetype = QFileDialog.getOpenFileName(self.centralwidget,
-                                                         "选取模型文件", getcwd(),  # 起始路径
-                                                         "Model File (*.pt)")  # 文件类型
+                                                         "Select model file", getcwd(),  # Initial directory
+                                                         "Model File (*.pt)")  # File type filter
 
         if filename != '':
-            self.textEdit_model.setText(filename + ' 已选中')
-            self.toolButton_model.setToolTip(filename + ' 已选中')
+            self.textEdit_model.setText(filename + ' selected')
+            self.toolButton_model.setToolTip(filename + ' selected')
             self.model.load_model(filename)
-            self.colors = self.get_cls_color(self.model.names)  # 根据类别产生对应标记的颜色
+            self.colors = self.get_cls_color(self.model.names)  # Generate color labels based on class names
         else:
-            self.textEdit_model.setText('选择模型文件')
-            self.toolButton_model.setToolTip('使用默认模型')
+            self.textEdit_model.setText('Select model file')
+            self.toolButton_model.setToolTip('Using default model')
 
     def toggle_image(self):
         """
@@ -262,9 +262,9 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         """
         self.imageHandler.stopProcess()  # 停止图像处理器的活动
 
-        filename, filetype = QFileDialog.getOpenFileName(self.centralwidget, "选取图片文件",
+        filename, filetype = QFileDialog.getOpenFileName(self.centralwidget, "Choose image",
                                                          self.file_path,  # 起始路径
-                                                         "图片(*.jpg;*.jpeg;*.png)")  # 文件类型
+                                                         "Image(*.jpg;*.jpeg;*.png)")  # 文件类型
 
         self.file_path = filename  # 保存路径
         if filename:
@@ -284,7 +284,7 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         """
         self.imageHandler.stopProcess()  # 停止图像处理器的活动
 
-        dir_choose = QFileDialog.getExistingDirectory(self.centralwidget, "选取文件夹", self.file_path)
+        dir_choose = QFileDialog.getExistingDirectory(self.centralwidget, "Choose folder", self.file_path)
 
         self.file_path = dir_choose  # 保存路径
         if dir_choose:
@@ -320,11 +320,11 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         self.clearUI()  # 清除UI上的内容
 
         if os.path.isfile(self.file_path):  # 检查文件路径是否为文件
-            self.textEdit_image.setText(self.file_path + ' 路径已选中')
+            self.textEdit_image.setText(self.file_path + ' Path selected')
         elif os.path.isdir(self.file_path):  # 检查文件路径是否为文件夹
-            self.textEdit_imgFolder.setText(self.file_path + ' 路径已选中')
+            self.textEdit_imgFolder.setText(self.file_path + ' Path selected')
         else:
-            print('路径不是有效的文件或文件夹路径')
+            print('Path not valid')
         # self.label_display.setText('正在启动识别系统...\n\nleading')  # 在标签中显示启动识别系统的提示信息
 
     def handle_image_failed(self, error):
@@ -344,9 +344,9 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         """
         self.videoHandler.stopMedia()  # 停止视频处理器的媒体播放
 
-        filename, filetype = QFileDialog.getOpenFileName(self, "选取视频文件",
+        filename, filetype = QFileDialog.getOpenFileName(self, "Select video",
                                                          "",  # 起始路径
-                                                         "视频(*.mp4;*.avi)")  # 文件类型
+                                                         "video(*.mp4;*.avi)")  # 文件类型
 
         if filename:
             self.file_path = filename  # 更新文件路径
@@ -372,8 +372,8 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         """
         self.clearUI()  # 清除UI上的内容
         # 绘制初始的垂直条形图
-        self.textEdit_video.setText(self.file_path + ' 文件已选中')  # 在视频文本框中显示选中的视频文件路径
-        self.label_display.setText('正在启动识别系统...\n\nleading')  # 在标签中显示启动识别系统的提示信息
+        self.textEdit_video.setText(self.file_path + ' file selected')  # 在视频文本框中显示选中的视频文件路径
+        self.label_display.setText('Staring system...\n\nleading')  # 在标签中显示启动识别系统的提示信息
 
     def handle_video_failed(self, error):
         """
@@ -411,8 +411,8 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         """
         self.clearUI()  # 清理UI上的内容
         # 绘制初始的垂直条形图
-        self.textEdit_camera.setText('实时摄像已启动')  # 在摄像头文本框中显示摄像头已启动的信息
-        self.label_display.setText('正在启动识别系统...\n\nleading')  # 在标签中显示启动识别系统的提示信息
+        self.textEdit_camera.setText('Live camera started')  # Display camera started message in the text box
+        self.label_display.setText('Starting recognition system...\n\nLoading')
         QtWidgets.QApplication.processEvents()  # 更新界面
 
     def handle_camera_failed(self, error_message):
@@ -420,7 +420,8 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         处理摄像头打开失败事件：
         - 弹出警告对话框，显示错误信息
         """
-        QMessageBox.warning(self, "Warning", "请检测相机与电脑是否连接正确！\n " + error_message,
+        QMessageBox.warning(self, "Warning",
+                            "Please check if the camera is properly connected to the computer!\n" + error_message,
                             buttons=QMessageBox.Ok, defaultButton=QMessageBox.Ok)
 
     def handle_closed(self):
@@ -432,7 +433,7 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         """
         self.clearUI()  # 清理UI上的内容
         self.comboBox_select.clear()  # 清空下拉框中的选项
-        self.comboBox_select.addItem('所有目标')  # 添加"所有目标"选项
+        self.comboBox_select.addItem('all target')  # 添加"所有目标"选项
         self.label_display.setText('')  # 清空标签的显示文字
         self.total_frames = 1000  # 重置默认视频总帧数
         self.cur_frames = 0  # 重置当前帧
@@ -489,7 +490,7 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
                 # 更新下拉框
                 self.comboBox_select.currentIndexChanged.disconnect(self.toggle_comboBox)  # 断开下拉框的信号连接
                 self.comboBox_select.clear()  # 清空下拉框
-                self.comboBox_select.addItem('所有目标')  # 添加"所有目标"选项
+                self.comboBox_select.addItem('all target')  # 添加"所有目标"选项
 
                 self.plot_vertical_bar(self.label_bar, self.count_name, count, self.colors, margin=30)
 
@@ -525,14 +526,14 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         """
         if self.saved_images:  # 检查列表是否不为空
             # 显示开始保存的消息
-            QMessageBox.information(self.centralwidget, "开始保存文件", "请点击确定\n开始保存文件...")
+            QMessageBox.information(self.centralwidget, "start save", "click yes\nstart save...")
 
             # 执行保存操作
             now_time = time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time()))  # 获取当前时间
             if len(self.saved_images) == 1:
                 # 只有一张图像时，保存为图片
                 cv2.imwrite('./pic_' + str(now_time) + '.png', self.saved_images[0])
-                QMessageBox.information(self.centralwidget, "保存文件", "\nSuccessed!\n当前图片文件已保存！")
+                QMessageBox.information(self.centralwidget, "save file", "\nSuccessed!\nImage saved")
             else:
                 # 为图像序列时，保存为视频
                 self.total_frames = len(self.saved_images)
@@ -556,9 +557,9 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
                              for row in range(nrows)] for i in range(ncols)}
             df = pd.DataFrame(data, columns=headers)
             df.to_csv('./table_data_' + str(now_time) + '.csv', index=False)
-            QMessageBox.information(self.centralwidget, "保存文件", "\nSuccessed!\n当前影像文件已保存！\n表格数据已保存为csv文件！")
+            QMessageBox.information(self.centralwidget, "save file", "\nSuccessed!\nVideo saved\nsaved csv！")
         else:
-            QMessageBox.warning(self.centralwidget, "保存文件", "saving...\nFailed!\n请保存前先选择检测操作！")
+            QMessageBox.warning(self.centralwidget, "save file", "saving...\nFailed!\nplease choose type")
 
     def toggle_version(self):
         """
@@ -566,9 +567,9 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         - 在消息框中显示面包多的链接
         """
         QMessageBox.about(self.centralwidget,
-                          "面包多",
-                          "<A href='https://mbd.pub/o/wuxian/'>"
-                          "https://mbd.pub/o/wuxian/</a>")  # 在消息框中显示面包多的链接
+                          "I6ZHOB",
+                          "<>"
+                          "")  # 在消息框中显示面包多的链接
 
     def toggle_website(self):
         """
@@ -576,9 +577,9 @@ class RecMainWindow(QMainWindow, Ui_MainWindow):
         - 在消息框中显示CSDN博客的链接
         """
         QMessageBox.about(self.centralwidget,
-                          "CSDN博客",
-                          "<A href='https://wuxian.blog.csdn.net'>"
-                          "https://wuxian.blog.csdn.net</a>")  # 在消息框中显示CSDN博客的链接
+                          "I6ZHOB",
+                          "<>"
+                          "")  # 在消息框中显示CSDN博客的链接
 
     def update_tooltip(self, value):
         """更新滑块的toolTips为当前值."""

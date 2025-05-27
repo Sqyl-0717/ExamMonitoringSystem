@@ -36,6 +36,20 @@ class LoginDialog(QLoginDialog, Ui_Dialog):  # 定义一个名为LoginDialog的�
         self.loadStyleSheet(qssFilePath="themes/login_text_black.qss")  # 设置样式表
         self.generate_code()  # 生成验证码
 
+        # ✅ 放在这里，确保 setupUi 完成后执行
+        self.lineEdit_user_log.setPlaceholderText("Enter Username")
+        self.lineEdit_password.setPlaceholderText("Enter Password")
+        self.lineEdit_user_reg.setPlaceholderText("Enter Username")
+        self.lineEdit_password_reg.setPlaceholderText("Enter Password")
+        self.lineEdit_code_reg.setPlaceholderText("Enter Verification Code")
+
+        self.checkBox_remenber.setText("RememberPWD")
+        self.toolButton_forgetCode.setText("Forget PWD")
+        self.pushButton_login.setText("Log in")
+        self.toolButton_go2reg.setText("Register")
+        self.toolButton_go2login.setText("Back to Login")
+        self.pushButton_reg.setText("Register")
+
     def setSlots(self):  # 定义setSlots函数，用于设置各个按钮的点击事件对应的函数
         self.pushButton_reg.clicked.connect(self.do_reg)  # 当注册按钮被点击时，调用self.do_reg函数
         self.pushButton_login.clicked.connect(self.do_login)  # 当登录按钮被点击时，调用self.do_login函数
@@ -106,17 +120,17 @@ class LoginDialog(QLoginDialog, Ui_Dialog):  # 定义一个名为LoginDialog的�
 
         # 使用文件选择对话框选择图片
         file_choose, filetype = QFileDialog.getOpenFileName(
-            self, "选取图片文件",
+            self, "Choose image",
             "./",  # 起始路径
             "图片(*.jpg;*.jpeg;*.png)")  # 文件类型
 
         reply = self.user_manager.verify_avatar(file_choose)  # 验证选择的头像文件
         if reply == -1:  # 如果文件不存在，显示提示信息
-            self.label_reg_info.setText("文件不存在")
+            self.label_reg_info.setText("File doesn't exit")
         elif reply == -2:  # 如果读取头像失败，显示提示信息
-            self.label_reg_info.setText("读取头像失败")
+            self.label_reg_info.setText("Fail to read")
         elif reply == 0:  # 如果头像文件有效，显示提示信息，并将头像文件的路径保存到self.avatar中
-            self.label_reg_info.setText("有效头像文件")
+            self.label_reg_info.setText("Valid image")
             self.avatar = file_choose
             self.label_pic_reg.setStyleSheet(f"QLabel {{ border-image: url({file_choose}) }}")  # 将头像显示在label_pic_reg控件上
 
@@ -125,18 +139,19 @@ class LoginDialog(QLoginDialog, Ui_Dialog):  # 定义一个名为LoginDialog的�
         pwd_edit = self.lineEdit_password.text()  # 获取登录密码输入框的文本
 
         if name_edit != "" and pwd_edit != "":  # 如果用户名和密码都不为空
-            if self.pushButton_login.text() == "登 录":  # 如果登录按钮的文本是"登 录"
+            if self.pushButton_login.text() == "Log in":  # 如果登录按钮的文本是"登 录"
+            # if self.tabWidget.currentIndex() == 0 and self.pushButton_login.isEnabled():
                 # 尝试验证用户名和密码
                 reply = self.user_manager.verify_login(name_edit, pwd_edit)
                 if reply == -2:  # 如果密码不正确，显示提示信息
-                    self.label_log_info.setText("密码不正确")
+                    self.label_log_info.setText("PWD incorrect")
                 elif reply == -1:  # 如果用户未注册，显示提示信息
-                    self.label_log_info.setText("用户未注册")
+                    self.label_log_info.setText("Username error")
                 elif reply == 0:  # 如果用户名和密码都正确
                     # 获取头像
                     avatar = self.user_manager.get_avatar(name_edit)
                     self.label_pic.setStyleSheet(f"QLabel {{ border-image: url({avatar}) }}")  # 将头像显示在label_pic控件上
-                    self.label_log_info.setText("正在登录...")  # 显示正在登录的提示信息
+                    self.label_log_info.setText("Login..")  # 显示正在登录的提示信息
                     QtWidgets.QApplication.processEvents()  # 处理所有事件，以更新界面
                     time.sleep(3)  # 等待3秒
                     self.close()  # 关闭登录对话框
@@ -165,17 +180,17 @@ class LoginDialog(QLoginDialog, Ui_Dialog):  # 定义一个名为LoginDialog的�
 
         if name_edit != "" and pwd_edit != "" and ver_edit != "":  # 如果用户名、密码和验证码都不为空
             if ver_edit.lower() == self.ver_code.lower():  # 如果输入的验证码（忽略大小写）与生成的验证码一致
-                if self.pushButton_reg.text() == "注 册":  # 如果注册按钮的文本是"注 册"
+                if self.pushButton_reg.text() == "Register":  # 如果注册按钮的文本是"注 册"
                     # 调用数据库接口尝试注册
                     reply = self.user_manager.register(name_edit, pwd_edit, self.avatar)
                     if reply == 0:  # 如果注册成功，显示提示信息
-                        self.label_reg_info.setText("注册成功")
+                        self.label_reg_info.setText("Register successes")
                     elif reply == -1:  # 如果用户已被注册过，显示提示信息
-                        self.label_reg_info.setText("该用户已被注册过")
+                        self.label_reg_info.setText("Username occupied")
                     elif reply == -2:  # 如果密码长度过短，显示提示信息
-                        self.label_reg_info.setText("密码长度过短")
+                        self.label_reg_info.setText("PWD too short")
                     elif reply == -3:  # 如果没有选择头像文件，显示提示信息
-                        self.label_reg_info.setText("请选择头像文件")
+                        self.label_reg_info.setText("Please select an avatar")
 
                 elif self.pushButton_reg.text() == "修改密码":  # 如果注册按钮的文本是"修改密码"
                     reply = self.user_manager.change_password(name_edit, pwd_edit)  # 尝试修改密码
@@ -231,7 +246,7 @@ class LoginDialog(QLoginDialog, Ui_Dialog):  # 定义一个名为LoginDialog的�
         self.tabWidget.setTabVisible(1, True)
         self.tabWidget.setCurrentIndex(1)
 
-        self.pushButton_reg.setText("注 册")  # 将注册按钮的文本改为"注 册"
+        self.pushButton_reg.setText("Register")  # 将注册按钮的文本改为"注 册"
         self.toolButton_loadLogo.setEnabled(True)  # 启用加载头像按钮
 
     def go2log(self):  # 定义go2log函数，用于切换到登录界面

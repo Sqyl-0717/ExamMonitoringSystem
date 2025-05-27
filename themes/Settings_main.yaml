@@ -2,15 +2,15 @@
 
 label_title:
   type: "QLabel"
-  text: "基于YOLOv8/v5的智能监考系统"
+  text: "YOLOv8/v5-based Intelligent Exam Monitoring System"
 
 label_website:
   type: "QLabel"
-  text: "B站：思绪亦无限  CSDN、知乎：思绪无限"
+  text: "I6ZHOB"
 
 label_info:
   type: "QLabel"
-  text: "B站：思绪亦无限\n\nCSDN、知乎：思绪无限"
+  text: "IB8G8J"
 
 label_time_result:
   type: "QLabel"
@@ -46,23 +46,23 @@ label_ymax_result:
 
 textEdit_image:
   type: "QTextEdit"
-  text: "选择图片文件"
+  text: "Choose image"
 
 textEdit_imgFolder:
   type: "QTextEdit"
-  text: "选择图片文件夹"
+  text: "Choose image folder"
 
 textEdit_video:
   type: "QTextEdit"
-  text: "选择视频文件"
+  text: "Choose video"
 
 textEdit_camera:
   type: "QTextEdit"
-  text: "摄像头未开启"
+  text: "Camera not working"
 
 textEdit_model:
   type: "QTextEdit"
-  text: "选择模型文件"
+  text: "Choose model"
 
 MainWindow:
   type: "QMainWindow"

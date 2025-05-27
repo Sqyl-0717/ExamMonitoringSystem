@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'Recognition_UI.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.0
+## Created by: Qt User Interface Compiler version 6.5.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -122,6 +122,7 @@ class Ui_MainWindow(object):
         font1.setBold(False)
         font1.setItalic(False)
         self.label_title.setFont(font1)
+        self.label_title.setLocale(QLocale(QLocale.Chinese, QLocale.China))
         self.label_title.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_12.addWidget(self.label_title)
@@ -175,6 +176,7 @@ class Ui_MainWindow(object):
         font2.setBold(False)
         font2.setItalic(False)
         self.textEdit_camera.setFont(font2)
+        self.textEdit_camera.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         self.textEdit_camera.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.textEdit_camera.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.textEdit_camera.setLineWrapMode(QTextEdit.NoWrap)
@@ -203,6 +205,7 @@ class Ui_MainWindow(object):
         self.textEdit_image.setMaximumSize(QSize(280, 40))
         self.textEdit_image.setFont(font2)
         self.textEdit_image.setLayoutDirection(Qt.LeftToRight)
+        self.textEdit_image.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         self.textEdit_image.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.textEdit_image.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.textEdit_image.setLineWrapMode(QTextEdit.NoWrap)
@@ -230,6 +233,7 @@ class Ui_MainWindow(object):
         self.textEdit_model.setMinimumSize(QSize(150, 30))
         self.textEdit_model.setMaximumSize(QSize(280, 40))
         self.textEdit_model.setFont(font2)
+        self.textEdit_model.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         self.textEdit_model.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.textEdit_model.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.textEdit_model.setLineWrapMode(QTextEdit.NoWrap)
@@ -258,6 +262,7 @@ class Ui_MainWindow(object):
         self.textEdit_imgFolder.setMaximumSize(QSize(280, 40))
         self.textEdit_imgFolder.setFont(font2)
         self.textEdit_imgFolder.setLayoutDirection(Qt.LeftToRight)
+        self.textEdit_imgFolder.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         self.textEdit_imgFolder.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.textEdit_imgFolder.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.textEdit_imgFolder.setLineWrapMode(QTextEdit.NoWrap)
@@ -286,6 +291,7 @@ class Ui_MainWindow(object):
         self.textEdit_video.setMaximumSize(QSize(280, 40))
         self.textEdit_video.setFont(font2)
         self.textEdit_video.setLayoutDirection(Qt.LeftToRight)
+        self.textEdit_video.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         self.textEdit_video.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.textEdit_video.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.textEdit_video.setLineWrapMode(QTextEdit.NoWrap)
@@ -921,7 +927,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"TrafficSign Recognition v1.0\uff08\u601d\u7eea\u65e0\u9650\uff09", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"TrafficSign Recognition v1.0\uff08I6ZHOB)", None))
 #if QT_CONFIG(tooltip)
         MainWindow.setToolTip("")
 #endif // QT_CONFIG(tooltip)
@@ -940,7 +946,7 @@ class Ui_MainWindow(object):
         self.toolButton_version.setToolTip(QCoreApplication.translate("MainWindow", u"\u7248\u672c\u4fe1\u606f", None))
 #endif // QT_CONFIG(tooltip)
         self.toolButton_version.setText("")
-        self.label_title.setText(QCoreApplication.translate("MainWindow", u"\u57fa\u4e8eYOLOv8/v5\u7684\u756a\u8304\u6210\u719f\u5ea6\u68c0\u6d4b\u7cfb\u7edf", None))
+        self.label_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:700; font-style:italic;\">YOLOv8/v5-Based</span><span style=\" font-style:italic;\"> Intelligent Exam Proctoring System</span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.toolButton_camera.setToolTip(QCoreApplication.translate("MainWindow", u"\u5f00\u542f\u6444\u50cf\u5934", None))
 #endif // QT_CONFIG(tooltip)
@@ -952,7 +958,7 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'12pt \u534e\u4e3a\u4eff\u5b8b'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">\u6444\u50cf\u5934\u672a\u5f00\u542f</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">Camera closed</span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.toolButton_file.setToolTip(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u56fe\u7247", None))
 #endif // QT_CONFIG(tooltip)
@@ -964,7 +970,7 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'12pt \u534e\u4e3a\u4eff\u5b8b'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">\u9009\u62e9\u56fe\u7247\u6587\u4ef6</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">Choose photo</span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.toolButton_model.setToolTip(QCoreApplication.translate("MainWindow", u"\u4f7f\u7528\u9ed8\u8ba4\u6a21\u578b", None))
 #endif // QT_CONFIG(tooltip)
@@ -976,7 +982,7 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'12pt \u534e\u4e3a\u4eff\u5b8b'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">\u9009\u62e9\u6a21\u578b\u6587\u4ef6</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">Choose model</span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.toolButton_folder.setToolTip(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u56fe\u7247\u6587\u4ef6\u5939", None))
 #endif // QT_CONFIG(tooltip)
@@ -988,7 +994,7 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'12pt \u534e\u4e3a\u4eff\u5b8b'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">\u9009\u62e9\u56fe\u7247\u6587\u4ef6\u5939</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">Choose photo folder</span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.toolButton_video.setToolTip(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u89c6\u9891", None))
 #endif // QT_CONFIG(tooltip)
@@ -1000,7 +1006,7 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'12pt \u534e\u4e3a\u4eff\u5b8b'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">\u9009\u62e9\u89c6\u9891\u6587\u4ef6</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Adobe Devanagari';\">Choose video</span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.loginTitle.setToolTip(QCoreApplication.translate("MainWindow", u"\u767b\u5f55\u4fe1\u606f", None))
 #endif // QT_CONFIG(tooltip)
@@ -1009,26 +1015,26 @@ class Ui_MainWindow(object):
         self.toolButton_menu.setToolTip(QCoreApplication.translate("MainWindow", u"\u5f39\u51fa\u663e\u793a", None))
 #endif // QT_CONFIG(tooltip)
         self.toolButton_menu.setText("")
-        self.pushButton_hide.setText(QCoreApplication.translate("MainWindow", u"\u9690\u85cf\u663e\u793a", None))
+        self.pushButton_hide.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
         self.label_slide_conf.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span >CONF\uff1a</span></p></body></html>", None))
         self.label_slide_iou.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>IOU\uff1a</p></body></html>", None))
         self.label_picTime.setText("")
-        self.label_useTime.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span >\u7528\u65f6\uff1a</span></p></body></html>", None))
+        self.label_useTime.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Time:</p></body></html>", None))
         self.label_time_result.setText(QCoreApplication.translate("MainWindow", u"0 s", None))
         self.label_picNumber.setText("")
-        self.label_objNum.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u76ee\u6807\u6570\u76ee\uff1a</p></body></html>", None))
+        self.label_objNum.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>GoalNumber:</p></body></html>", None))
         self.label_numer_result.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.label_display.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u5e8f\u53f7", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID / No.", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u753b\u9762\u6807\u8bc6", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Frame ID", None));
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"\u7ed3\u679c", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Result", None));
         ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"\u4f4d\u7f6e", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Position", None));
         ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"\u7f6e\u4fe1\u5ea6", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Confidence", None));
         ___qtablewidgetitem5 = self.tableWidget.verticalHeaderItem(0)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"0", None));
         ___qtablewidgetitem6 = self.tableWidget.verticalHeaderItem(1)
@@ -1040,21 +1046,21 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(False)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
-        self.label_website.setText(QCoreApplication.translate("MainWindow", u"B\u7ad9\uff1a\u601d\u7eea\u4ea6\u65e0\u9650  CSDN\u3001\u77e5\u4e4e\uff1a\u601d\u7eea\u65e0\u9650", None))
+        self.label_website.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>I6ZHOB<br/>IB8G8J</p></body></html>", None))
         self.label.setText("")
         self.label_bar.setText("")
         self.label_picSelect.setText("")
-        self.comboBox_select.setItemText(0, QCoreApplication.translate("MainWindow", u"\u6240\u6709\u76ee\u6807", None))
+        self.comboBox_select.setItemText(0, QCoreApplication.translate("MainWindow", u"All goals", None))
 
-        self.comboBox_select.setCurrentText(QCoreApplication.translate("MainWindow", u"\u6240\u6709\u76ee\u6807", None))
+        self.comboBox_select.setCurrentText(QCoreApplication.translate("MainWindow", u"All goals", None))
         self.label_picResult.setText("")
-        self.label_class.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u7c7b\u522b\uff1a</p></body></html>", None))
+        self.label_class.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Category:</p></body></html>", None))
         self.label_class_result.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.label_picConf.setText("")
-        self.label_conf.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u7f6e\u4fe1\u5ea6\uff1a</p></body></html>", None))
+        self.label_conf.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Confidence:</p></body></html>", None))
         self.label_score_result.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.label_picLocation.setText("")
-        self.label_location.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u4f4d \u7f6e\uff1a</p></body></html>", None))
+        self.label_location.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Position:</p></body></html>", None))
         self.label_xmin.setText(QCoreApplication.translate("MainWindow", u"xmin: ", None))
         self.label_xmin_result.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.label_ymin.setText(QCoreApplication.translate("MainWindow", u"ymin: ", None))

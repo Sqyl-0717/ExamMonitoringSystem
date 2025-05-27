@@ -50,7 +50,7 @@ def frame_process(image):  # 定义frame_process函数，用于处理每一帧�
     window.dispImage(window.label, image)  # 在窗口的label控件上显示图像
 
 
-cls_name = ["疑似作弊", "良好", "正常"]   # 定义类名列表
+cls_name = ["Suspected Cheating", "Good", "Normal"]  # 定义类名列表
 
 model = YOLOv8v5Detector()  # 创建YOLOv8Detector对象
 model.load_model(abs_path("weights/exam-yolov8n.pt", path_type="current"))  # 加载预训练的YOLOv8模型
